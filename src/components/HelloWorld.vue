@@ -20,6 +20,8 @@ export default defineComponent({
     setup: () => {
         const enableGreyScale = ref(false);
 
+        // const imgArray = imageMap; // use this instead of computed imgArray to get URL transform working
+
         const imgArray = computed(() => {
             if (enableGreyScale.value) {
                 return imageMapGreyScale;
