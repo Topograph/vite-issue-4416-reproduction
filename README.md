@@ -11,3 +11,7 @@
     b. There is an error in the developer console (see screenshot). following it in the production js (dist/assets/index.*.js) you will see, that not all the `new URL("")` paths have been correctly transformed
 
 ![Build Screenshot](build-screenshot.jpg)
+
+this is the reproduction setup for this discussion:
+
+https://github.com/vitejs/vite/issues/4416
