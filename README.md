@@ -1,27 +1,13 @@
-# Vue 3 + Typescript + Vite
+# Reproduce issue #4416 like this
 
-This template should help get you started developing with Vue 3 and Typescript in Vite.
+1. `npm install`
+2. `npm run dev`
+3. see http://localhost:3000/ and you should see 4 images. toggling the "greyscale" button changes the image sources
+4. `npm run build` or `npm run serve` to inspect production build
+5. open the production build in a browser. you should see, that 
+   
+    a. Not all assets have been exported (assetsInlineLimit is set to 0, in order to avoid inlining images.)
 
-## Recommended IDE Setup
+    b. There is an error in the developer console (see screenshot). following it in the production js (dist/assets/index.*.js) you will see, that not all the `new URL("")` paths have been correctly transformed
 
-[VSCode](https://code.visualstudio.com/) + [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur). Make sure to enable `vetur.experimental.templateInterpolationService` in settings!
-
-### If Using `<script setup>`
-
-[`<script setup>`](https://github.com/vuejs/rfcs/pull/227) is a feature that is currently in RFC stage. To get proper IDE support for the syntax, use [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) instead of Vetur (and disable Vetur).
-
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can use the following:
-
-### If Using Volar
-
-Run `Volar: Switch TS Plugin on/off` from VSCode command palette.
-
-### If Using Vetur
-
-1. Install and add `@vuedx/typescript-plugin-vue` to the [plugins section](https://www.typescriptlang.org/tsconfig#plugins) in `tsconfig.json`
-2. Delete `src/shims-vue.d.ts` as it is no longer needed to provide module info to Typescript
-3. Open `src/main.ts` in VSCode
-4. Open the VSCode command palette
-5. Search and run "Select TypeScript version" -> "Use workspace version"
+![Build Screenshot](build-screenshot.jpg)
